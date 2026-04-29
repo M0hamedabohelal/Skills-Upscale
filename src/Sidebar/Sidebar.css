@@ -1,0 +1,196 @@
+/* Sidebar.css */
+
+/* الخلفية الشفافة اللي ورا السايد بار */
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(2px);
+  z-index: 1000; /* لازم يكون فوق كل حاجة */
+}
+
+/* حاوية السايد بار نفسها */
+.sidebar-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 320px;
+  background-color: #f4f7f6; /* لون مقارب للصورة */
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -5px 0 30px rgba(0, 0, 0, 0.1);
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+/* ============ الجزء العلوي (User Header) ============ */
+.sidebar-header {
+  padding: 2rem 1.5rem 1.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.sidebar-user-card {
+  background: white;
+  padding: 1rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+}
+
+.sidebar-avatar-wrapper {
+  position: relative;
+}
+
+.sidebar-avatar {
+  width: 45px;
+  height: 45px;
+  background-color: #1e293b;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.status-dot {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 12px;
+  height: 12px;
+  background-color: #22c55e; /* لون أخضر */
+  border: 2px solid white;
+  border-radius: 50%;
+}
+
+.sidebar-user-info h5 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #1e293b;
+}
+
+.sidebar-user-info p {
+  margin: 0;
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+/* ============ المنيو (Menu) ============ */
+.sidebar-menu {
+  padding: 1.5rem;
+  flex-grow: 1; /* عشان ياخد المساحة الفاضية ويزق الفوتر لتحت */
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.2rem;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #475569;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.menu-item i {
+  font-size: 1.1rem;
+  color: #64748b;
+  transition: all 0.3s ease;
+  width: 20px;
+  text-align: center;
+}
+
+.menu-item:hover {
+  background-color: rgba(20, 184, 166, 0.1);
+  color: #14b8a6;
+}
+
+.menu-item:hover i {
+  color: #14b8a6;
+}
+
+/* ============ الجزء السفلي (Footer) ============ */
+.sidebar-footer {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.btn-logout {
+  width: 100%;
+  background-color: #b91c1c; /* اللون الأحمر زي الصورة */
+  color: white;
+  border: none;
+  padding: 1rem;
+  border-radius: 50px; /* زرار بيضاوي */
+  font-weight: 700;
+  font-size: 0.95rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(185, 28, 28, 0.3);
+  margin-bottom: 1.5rem;
+}
+
+.btn-logout:hover {
+  background-color: #991b1b;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(185, 28, 28, 0.4);
+}
+
+.version-text {
+  font-size: 0.65rem;
+  color: #94a3b8;
+  letter-spacing: 2px;
+  font-weight: 700;
+  margin: 0;
+}
+/* ============ Dark Mode Support for Sidebar ============ */
+body.dark-mode .sidebar-container {
+  background-color: #0f172a;
+  border-left: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .sidebar-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .sidebar-user-card {
+  background-color: #1e293b;
+  box-shadow: none;
+}
+
+body.dark-mode .sidebar-user-info h5 {
+  color: #f8fafc;
+}
+
+body.dark-mode .sidebar-user-info p {
+  color: #94a3b8;
+}
+
+body.dark-mode .menu-item {
+  color: #cbd5e1;
+}
+
+body.dark-mode .menu-item:hover {
+  background-color: rgba(20, 184, 166, 0.15);
+  color: #2dd4bf;
+}
+
+body.dark-mode .menu-item:hover i {
+  color: #2dd4bf;
+}

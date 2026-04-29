@@ -1,0 +1,104 @@
+/* Product-Driven.css */
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap");
+
+:root {
+  --primary-glow: conic-gradient(
+    from 180deg at 50% 50%,
+    #16abff33 0deg,
+    #0885ff33 55deg,
+    #54d6ff33 120deg,
+    #0071ff33 160deg,
+    transparent 360deg
+  );
+  --accent-teal: #14b8a6;
+  --deep-indigo: #4f46e5;
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --text-main: #1e293b;
+}
+
+.main-container {
+  background-color: #f8fafc;
+  min-height: 100vh;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+
+/* تأثير الخلفية المتحركة */
+.bg-blob {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: var(--primary-glow);
+  filter: blur(80px);
+  border-radius: 50%;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+/* تحسين العنوان */
+.hero-title {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--deep-indigo), var(--accent-teal));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.1;
+  letter-spacing: -0.05em;
+}
+
+/* كروت زجاجية (Glassmorphism) */
+.feature-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 24px;
+  padding: 40px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card-icon-box {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(
+    135deg,
+    rgba(79, 70, 229, 0.1),
+    rgba(20, 184, 166, 0.1)
+  );
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+/* زر متوهج */
+.btn-glow {
+  background: linear-gradient(135deg, var(--deep-indigo), var(--accent-teal));
+  color: white !important;
+  border: none;
+  padding: 16px 40px;
+  border-radius: 100px;
+  font-weight: 700;
+  box-shadow: 0 10px 25px -5px rgba(79, 70, 229, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-glow::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: rotate(45deg);
+  transition: 0.5s;
+  pointer-events: none;
+}
+
+.btn-glow:hover::after {
+  left: 120%;
+}
