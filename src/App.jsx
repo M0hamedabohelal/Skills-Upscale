@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css"
 import "@fortawesome/fontawesome-free/css/all.min.css"
 import './App.css'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { HashRouter as Router, Routes, Route } from 'react-router-dom'
 import Productdriven from "./Product-Driven/Product-Driven"
 import AnalyzePage from "./AnalyzePage/AnalyzePage"
 import Login from "./login/Login"
