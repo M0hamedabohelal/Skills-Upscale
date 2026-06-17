@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
 const Login = () => {
-  const [isLogin, setIsLogin] = useState(false); // false = Sign Up, true = Login
+  const [isLogin, setIsLogin] = useState(false); 
   const navigate = useNavigate();
 
   return (
@@ -45,17 +45,17 @@ const Login = () => {
               </p>
             </motion.div>
 
-            {/* AI Progress Tracking Card - طيران مستمر */}
+            {/* AI Progress Tracking Card */}
             <motion.div 
               className="auth-floating-card"
               initial={{ opacity: 0, y: 30 }}
               animate={{ 
                 opacity: 1, 
-                y: [0, -10, 0] // حركة الطيران لفوق ولتحت
+                y: [0, -10, 0] 
               }}
               transition={{ 
                 opacity: { delay: 0.4, duration: 0.8 },
-                y: { repeat: Infinity, duration: 4, ease: "easeInOut" } // تكرار مستمر
+                y: { repeat: Infinity, duration: 4, ease: "easeInOut" } 
               }}
             >
               <div className="card-header-icon">
@@ -87,7 +87,7 @@ const Login = () => {
         <div className="col-lg-6 auth-right">
           <motion.div 
             className="auth-form-card"
-            layout // بيخلي تغيير حجم الكارت لما تبدل بين التابات ناعم جداً
+            layout 
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.4 }}

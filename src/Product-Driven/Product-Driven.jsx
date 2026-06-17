@@ -1,40 +1,36 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
-import Sidebar from '../Sidebar/Sidebar'; // استدعاء السايد بار
+import Sidebar from '../Sidebar/Sidebar'; 
 import './Product-Driven.css';
+import logoOriginal from '../assets/logo/logo-original.png';
 
 const Productdriven = () => {
   const [particles, setParticles] = useState([]);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false); // حالة السايد بار (مقفول أو مفتوح)
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false); 
   const navigate = useNavigate();
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const { scrollY } = useScroll();
   
-  // Mouse tracking
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const springX = useSpring(mouseX, { stiffness: 100, damping: 30 });
   const springY = useSpring(mouseY, { stiffness: 100, damping: 30 });
 
-  // Parallax effects
   const y1 = useTransform(scrollY, [0, 500], [0, 80]);
   const y2 = useTransform(scrollY, [0, 500], [0, -80]);
   const opacity = useTransform(scrollY, [0, 300], [1, 0.3]);
 
-  // Handle mouse move
   useEffect(() => {
     const handleMouseMove = (e) => {
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
-
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, [mouseX, mouseY]);
 
-  // Background particles
   useEffect(() => {
     const particlesArray = Array.from({ length: 15 }, (_, i) => ({
       id: i,
@@ -54,15 +50,11 @@ const Productdriven = () => {
 
   const letter = {
     hidden: { opacity: 0, y: 30, rotateZ: -5 },
-    visible: { 
-      opacity: 1, y: 0, rotateZ: 0,
-      transition: { type: "spring", stiffness: 100, damping: 12 } 
-    }
+    visible: { opacity: 1, y: 0, rotateZ: 0, transition: { type: "spring", stiffness: 100, damping: 12 } }
   };
 
   return (
     <div className="main-container">
-      {/* Background elements */}
       <div className="animated-background">
         <motion.div className="wave wave1" animate={{ backgroundPosition: ['0px 0px', '600px 0px'] }} transition={{ duration: 20, repeat: Infinity, ease: "linear" }} />
         <motion.div className="wave wave2" animate={{ backgroundPosition: ['0px 0px', '-600px 0px'] }} transition={{ duration: 25, repeat: Infinity, ease: "linear" }} />
@@ -71,11 +63,7 @@ const Productdriven = () => {
       <div className="particles-container">
         {particles.map(particle => (
           <motion.div key={particle.id} className="particle"
-            animate={{
-              y: [particle.y, particle.y - 100, particle.y],
-              x: [particle.x, particle.x + Math.sin(particle.id) * 50, particle.x],
-              opacity: [0, 0.6, 0], scale: [0.5, 1, 0.5],
-            }}
+            animate={{ y: [particle.y, particle.y - 100, particle.y], x: [particle.x, particle.x + Math.sin(particle.id) * 50, particle.x], opacity: [0, 0.6, 0], scale: [0.5, 1, 0.5] }}
             transition={{ duration: particle.duration, delay: particle.delay, repeat: Infinity, ease: "linear" }}
             style={{ width: `${particle.size}px`, height: `${particle.size}px`, left: `${particle.x}%`, top: `${particle.y}%` }}
           />
@@ -88,44 +76,16 @@ const Productdriven = () => {
       <motion.div className="mouse-glow" animate={{ x: springX, y: springY }} />
 
       {/* Navbar */}
-      <motion.nav 
-        className="navbar navbar-expand-lg px-4 py-3 bg-transparent position-relative navbar-animated" 
-        style={{ zIndex: 10 }}
-        initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}
-      >
+      <motion.nav className="navbar navbar-expand-lg px-4 py-3 bg-transparent position-relative navbar-animated" style={{ zIndex: 10 }} initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
         <div className="container-fluid">
-          <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2, duration: 0.6 }} className="navbar-brand">
-            <motion.span className="bg-dark text-white rounded-3 px-2 py-1 me-2 fw-bold d-inline-block logo-box"
-              whileHover={{ rotate: 360, scale: 1.1 }} transition={{ type: "spring", stiffness: 100 }} whileTap={{ scale: 0.95 }}
-            >S</motion.span>
-            <span>SkillUpscale</span>
+          <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2, duration: 0.6 }} className="navbar-brand" style={{ cursor: 'pointer' }} onClick={() => navigate('/')}>
+            <img src={logoOriginal} alt="SkillUpscale" className="navbar-logo" />
           </motion.div>
+
           <div className="ms-auto d-flex align-items-center gap-2">
-            <motion.button 
-              onClick={() => navigate('/login')}
-              whileHover={{ scale: 1.05 }} 
-              whileTap={{ scale: 0.95 }} 
-              className="btn btn-link text-dark text-decoration-none fw-bold"
-            >
-              Login
-            </motion.button>
-            <motion.button 
-              onClick={() => navigate('/analyze')}
-              whileHover={{ scale: 1.05, y: -2 }} 
-              whileTap={{ scale: 0.93 }} 
-              className="btn btn-glow btn-nav"
-            >
-              Get Started
-            </motion.button>
-            
-            {/* أيقونة اليوزر المضافة جديد */}
-            <motion.div 
-              className="user-profile-avatar ms-2"
-              onClick={() => setIsSidebarOpen(true)} // فتح السايد بار عند الضغط
-              whileHover={{ scale: 1.1, boxShadow: "0 8px 16px rgba(20, 184, 166, 0.3)" }}
-              whileTap={{ scale: 0.95 }}
-              title="Profile"
-            >
+            <motion.button onClick={() => navigate('/login')} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="btn btn-link text-dark text-decoration-none fw-bold">Login</motion.button>
+            <motion.button onClick={() => navigate('/analyze')} whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.93 }} className="btn btn-glow btn-nav">Get Started</motion.button>
+            <motion.div className="user-profile-avatar ms-2" onClick={() => setIsSidebarOpen(true)} whileHover={{ scale: 1.1, boxShadow: "0 8px 16px rgba(20, 184, 166, 0.3)" }} whileTap={{ scale: 0.95 }} title="Profile">
               <i className="fa-solid fa-user"></i>
             </motion.div>
           </div>
@@ -140,23 +100,12 @@ const Productdriven = () => {
           ))}
         </motion.h1>
         
-        <motion.p 
-          initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1, duration: 0.8 }}
-          className="mx-auto mb-4 text-secondary description-text" 
-          style={{ maxWidth: '650px', fontWeight: 500, lineHeight: 1.7 }}
-        >
+        <motion.p initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1, duration: 0.8 }} className="mx-auto mb-4 text-secondary description-text" style={{ maxWidth: '650px', fontWeight: 500, lineHeight: 1.7 }}>
           An integrated platform designed to help students, graduates, and professionals understand and develop their skills to match real job market requirements.
         </motion.p>
 
         <motion.div initial={{ opacity: 0, scale: 0.9, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} transition={{ delay: 1.3, type: "spring", stiffness: 100 }}>
-          <motion.button 
-            onClick={() => navigate('/analyze')}
-            whileHover={{ scale: 1.05, y: -2 }} 
-            whileTap={{ scale: 0.93 }} 
-            className="btn btn-glow px-4 py-2 hero-btn"
-          >
-            Start Resume Analysis
-          </motion.button>
+          <motion.button onClick={() => navigate('/analyze')} whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.93 }} className="btn btn-glow px-4 py-2 hero-btn">Start Resume Analysis</motion.button>
         </motion.div>
       </div>
 
@@ -171,27 +120,9 @@ const Productdriven = () => {
         </motion.div>
         
         <div className="row g-3">
-          <FeatureCard 
-            icon="fa-wand-magic-sparkles" 
-            title="CV Analysis" 
-            desc="Extract structured data, technical, and soft skills from resumes with high accuracy." 
-            delay={1.6} 
-            color="#4f46e5" 
-          />
-          <FeatureCard 
-            icon="fa-magnifying-glass-chart" 
-            title="Skill Gap Engine" 
-            desc="Compare your skills with target job requirements and categorize them with professional accuracy." 
-            delay={1.8} 
-            color="#14b8a6" 
-          />
-          <FeatureCard 
-            icon="fa-map-location-dot" 
-            title="Personalized Roadmap" 
-            desc="Generate a personalized learning path to bridge skill gaps based on market demand." 
-            delay={2.0} 
-            color="#06b6d4" 
-          />
+          <FeatureCard icon="fa-wand-magic-sparkles" title="CV Analysis" desc="Extract structured data, technical, and soft skills from resumes with high accuracy." delay={1.6} color="#4f46e5" />
+          <FeatureCard icon="fa-magnifying-glass-chart" title="Skill Gap Engine" desc="Compare your skills with target job requirements and categorize them with professional accuracy." delay={1.8} color="#14b8a6" />
+          <FeatureCard icon="fa-map-location-dot" title="Personalized Roadmap" desc="Generate a personalized learning path to bridge skill gaps based on market demand." delay={2.0} color="#06b6d4" />
         </div>
       </div>
 
@@ -201,7 +132,6 @@ const Productdriven = () => {
         </svg>
       </motion.div>
 
-      {/* مكون السايد بار المضاف في آخر الصفحة */}
       <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
     </div>
   );
@@ -209,11 +139,7 @@ const Productdriven = () => {
 
 const FeatureCard = ({ icon, title, desc, delay, color }) => (
   <div className="col-md-4">
-    <motion.div 
-      initial={{ opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.3 }}
-      transition={{ delay, duration: 0.5, ease: "easeOut" }} whileHover={{ y: -5, transition: { duration: 0.2 } }}
-      className="feature-card h-100"
-    >
+    <motion.div initial={{ opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.3 }} transition={{ delay, duration: 0.5, ease: "easeOut" }} whileHover={{ y: -5, transition: { duration: 0.2 } }} className="feature-card h-100">
       <motion.div className="card-icon-box" whileHover={{ scale: 1.1 }} transition={{ type: "spring", stiffness: 200 }} style={{ background: `linear-gradient(135deg, ${color}18, ${color}08)` }}>
         <i className={`fas ${icon}`} style={{ color }}></i>
       </motion.div>

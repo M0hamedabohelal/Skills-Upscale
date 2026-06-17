@@ -7,7 +7,7 @@ const Sidebar = ({ isOpen, onClose }) => {
   const navigate = useNavigate();
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  // أول ما الـ Sidebar يفتح، بيشوف هل اليوزر كان مختار الدارك مود قبل كده ولا لأ
+  // التحقق من الدارك مود أول ما الـ Sidebar يفتح
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
@@ -78,7 +78,12 @@ const Sidebar = ({ isOpen, onClose }) => {
                 <span>Get Started</span>
               </div>
 
-              {/* زرار الدارك مود */}
+              {/* 👈 زرار الـ Dashboard الجديد المضاف هنا */}
+              <div className="menu-item" onClick={() => handleNavigation('/dashboard')}>
+                <i className="fa-solid fa-chart-pie"></i>
+                <span>Dashboard</span>
+              </div>
+
               <div className="menu-item" onClick={toggleTheme}>
                 <i className={`fa-solid ${isDarkMode ? 'fa-sun' : 'fa-moon'}`}></i>
                 <span>{isDarkMode ? 'Light Mode' : 'Dark Mode'}</span>

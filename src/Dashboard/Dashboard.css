@@ -1,0 +1,455 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
+
+.dashboard-container {
+  background-color: #f4f9f9;
+  min-height: 100vh;
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.dashboard-link {
+  color: #64748b;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.dashboard-link.active {
+  color: #64748b;
+}
+
+/* Navbar Logo Image */
+.navbar-logo {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.08));
+}
+.navbar-logo:hover {
+  transform: scale(1.03);
+  filter: drop-shadow(0 2px 6px rgba(20, 184, 166, 0.25));
+}
+body.dark-mode .navbar-logo {
+  filter: brightness(1.2) drop-shadow(0 1px 3px rgba(0, 0, 0, 0.3));
+}
+@media (max-width: 480px) {
+  .navbar-logo {
+    height: 28px;
+  }
+}
+
+/* Header */
+.dashboard-header h1 {
+  color: #00d4c8;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.5px;
+}
+
+.dashboard-header p {
+  color: #475569;
+  font-size: 1.1rem;
+  font-weight: 500;
+  max-width: 600px;
+}
+
+/* General Card Style */
+.dash-card {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+}
+
+.card-title-sec {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: #0d9488;
+}
+.card-title-sec i {
+  font-size: 1.2rem;
+}
+.card-title-sec h4 {
+  margin: 0;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+/* ============ 1. Skills Analysis Box (Keywords) ============ */
+.analysis-box {
+  background-color: #f8fafc;
+  border: 1px solid #f1f5f9;
+  border-radius: 16px;
+  padding: 1.5rem;
+}
+.text-teal {
+  color: #10b981;
+} /* لون أخضر للأيقونة */
+.pills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+.normal-pill {
+  background-color: white;
+  color: #3b82f6; /* لون أزرق للنص */
+  border: 1px solid #bfdbfe; /* لون أزرق فاتح للحدود */
+  padding: 0.6rem 1.2rem;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: inline-block;
+  transition: transform 0.2s;
+}
+.normal-pill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(59, 130, 246, 0.1);
+}
+
+/* ============ 2. Skills Categorization (Tabs View) ============ */
+.skills-tabs-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  background-color: #f8fafc;
+  padding: 0.5rem;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.skill-tab-btn {
+  flex: 1;
+  min-width: 120px;
+  background: transparent;
+  border: none;
+  padding: 0.7rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.skill-tab-btn:hover {
+  background-color: #f1f5f9;
+  color: #1e293b;
+}
+
+.skill-tab-btn.active {
+  background-color: white;
+  color: #0f172a;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Dots in Tabs */
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.dot-present {
+  background-color: #14b8a6;
+}
+.dot-missing {
+  border: 2px solid #14b8a6;
+  background-color: transparent;
+}
+.dot-normal {
+  background-color: #cbd5e1;
+}
+.dot-remove {
+  background-color: #fecaca;
+  border: 1px solid #fca5a5;
+}
+
+/* Category Titles */
+.category-title {
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.text-present {
+  color: #14b8a6;
+}
+.text-missing {
+  color: #0d9488;
+}
+.text-normal {
+  color: #64748b;
+}
+.text-remove {
+  color: #ef4444;
+}
+
+/* Skill Badges (Kills) */
+.skill-category-group {
+  padding: 1rem;
+  background: #ffffff;
+  border: 1px solid #f1f5f9;
+  border-radius: 12px;
+}
+
+.skill-badge {
+  padding: 0.6rem 1.2rem;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
+  transition: transform 0.2s;
+}
+
+.skill-badge:hover {
+  transform: translateY(-2px);
+}
+
+.badge-present {
+  background-color: #14b8a6;
+  color: white;
+}
+.badge-missing {
+  background-color: white;
+  color: #14b8a6;
+  border: 1.5px solid #14b8a6;
+}
+.badge-normal {
+  background-color: #f1f5f9;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+}
+.badge-remove {
+  background-color: #fee2e2;
+  color: #ef4444;
+  border: 1px solid #fca5a5;
+}
+
+/* ============ 3. Job Matches ============ */
+.job-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+.job-item h6 {
+  margin: 0 0 0.2rem 0;
+  font-weight: 700;
+  color: #0d9488;
+}
+.job-item p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #64748b;
+}
+.match-score {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.85rem;
+}
+.match-score.high {
+  border: 2.5px solid #0d9488;
+  color: #0f172a;
+}
+.match-score.medium {
+  border: 2.5px solid #94a3b8;
+  color: #64748b;
+}
+.match-score.low {
+  border: 2.5px solid #cbd5e1;
+  color: #94a3b8;
+}
+
+.btn-view-all {
+  width: 100%;
+  background: transparent;
+  border: 1px solid #e2e8f0;
+  padding: 0.8rem;
+  border-radius: 50px;
+  color: #0d9488;
+  font-weight: 700;
+  transition: all 0.3s;
+}
+.btn-view-all:hover {
+  background: #f8fafc;
+  border-color: #0d9488;
+}
+
+/* ============ 4. Learning Path Timeline ============ */
+.timeline {
+  position: relative;
+  padding-left: 1.5rem;
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10px;
+  bottom: 20px;
+  width: 2px;
+  background-color: #e2e8f0;
+}
+.timeline-item {
+  position: relative;
+  margin-bottom: 2rem;
+}
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.tl-icon {
+  position: absolute;
+  left: -1.5rem;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  background: white;
+  border: 2px solid #e2e8f0;
+}
+.in-progress .tl-icon {
+  background: #00d4c8;
+  border-color: #00d4c8;
+  color: white;
+}
+
+.tl-content h6 {
+  margin: 0 0 0.3rem 0;
+  font-weight: 700;
+  color: #0d9488;
+}
+.tl-content p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+.tl-progress-bar {
+  width: 100%;
+  height: 6px;
+  background: #e2e8f0;
+  border-radius: 3px;
+  margin: 0.5rem 0;
+}
+.tl-progress-fill {
+  height: 100%;
+  background: #0d9488;
+  border-radius: 3px;
+}
+
+/* ============ Global Dark Mode - Dashboard ============ */
+body.dark-mode .dashboard-container {
+  background-color: #0f172a;
+}
+body.dark-mode .navbar-brand {
+  color: #f8fafc !important;
+}
+body.dark-mode .dashboard-header h1 {
+  color: #2dd4bf;
+}
+body.dark-mode .dashboard-header p {
+  color: #94a3b8;
+}
+body.dark-mode .dash-card {
+  background-color: #1e293b;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+}
+body.dark-mode .card-title-sec h4,
+body.dark-mode .job-item h6,
+body.dark-mode .tl-content h6 {
+  color: #2dd4bf;
+}
+
+/* Dark Mode: Analysis Box */
+body.dark-mode .analysis-box {
+  background-color: #0f172a;
+  border-color: #334155;
+}
+body.dark-mode .normal-pill {
+  background-color: #1e293b;
+  border-color: #3b82f6;
+  color: #93c5fd;
+}
+
+/* Dark Mode: Skills Categorization Tabs */
+body.dark-mode .skills-tabs-container {
+  background-color: #0f172a;
+  border-color: #334155;
+}
+body.dark-mode .skill-tab-btn {
+  color: #94a3b8;
+}
+body.dark-mode .skill-tab-btn:hover {
+  background-color: #1e293b;
+  color: #f8fafc;
+}
+body.dark-mode .skill-tab-btn.active {
+  background-color: #1e293b;
+  color: #f8fafc;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+body.dark-mode .skill-category-group {
+  background-color: #1e293b;
+  border-color: #334155;
+}
+body.dark-mode .text-normal {
+  color: #cbd5e1;
+}
+body.dark-mode .badge-normal {
+  background-color: #334155;
+  border-color: #475569;
+  color: #cbd5e1;
+}
+body.dark-mode .badge-missing {
+  background-color: transparent;
+  border-color: #2dd4bf;
+  color: #2dd4bf;
+}
+body.dark-mode .badge-remove {
+  background-color: #450a0a;
+  border-color: #7f1d1d;
+  color: #fca5a5;
+}
+
+body.dark-mode .job-item p,
+body.dark-mode .tl-content p,
+body.dark-mode .dashboard-link {
+  color: #94a3b8;
+}
+body.dark-mode .match-score.high {
+  color: #f8fafc;
+  border-color: #2dd4bf;
+}
+body.dark-mode .btn-view-all {
+  border-color: #334155;
+  color: #2dd4bf;
+}
+body.dark-mode .btn-view-all:hover {
+  background: #0f172a;
+}
+body.dark-mode .timeline::before {
+  background-color: #334155;
+}
+body.dark-mode .tl-icon {
+  border-color: #334155;
+  background: #0f172a;
+}
+body.dark-mode .tl-progress-bar {
+  background: #334155;
+}

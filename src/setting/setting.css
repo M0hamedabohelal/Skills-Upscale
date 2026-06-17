@@ -1,0 +1,335 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
+
+.settings-container {
+  background-color: #f4f9f9; /* لون الخلفية الفاتح المريح زي الصورة */
+  min-height: 100vh;
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.dashboard-link {
+  color: #64748b;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+.dashboard-link:hover {
+  color: #14b8a6;
+}
+
+/* Navbar Logo Image */
+.navbar-logo {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.08));
+}
+.navbar-logo:hover {
+  transform: scale(1.03);
+  filter: drop-shadow(0 2px 6px rgba(20, 184, 166, 0.25));
+}
+body.dark-mode .navbar-logo {
+  filter: brightness(1.2) drop-shadow(0 1px 3px rgba(0, 0, 0, 0.3));
+}
+@media (max-width: 480px) {
+  .navbar-logo {
+    height: 28px;
+  }
+}
+
+.settings-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.settings-header h1 {
+  color: #00d4c8; /* لون التيل الفاتح للعنوان */
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.settings-header p {
+  color: #475569;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* ============ Cards ============ */
+.settings-card {
+  background: white;
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+  margin-bottom: 2rem;
+}
+
+/* Profile Section */
+.profile-header-sec {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.profile-avatar-large {
+  width: 90px;
+  height: 90px;
+  background-color: #1e293b;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 2.5rem;
+  position: relative;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.edit-avatar-btn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: #00d4c8;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid white;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.edit-avatar-btn i {
+  font-size: 0.7rem;
+}
+.edit-avatar-btn:hover {
+  transform: scale(1.1);
+}
+
+.profile-title-sec h5 {
+  color: #0d9488;
+  font-weight: 800;
+  margin-bottom: 0.2rem;
+}
+.profile-title-sec p {
+  color: #64748b;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* Forms */
+.settings-form-group label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #64748b;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.5px;
+}
+
+.settings-form-group input {
+  width: 100%;
+  background-color: #e2e8f0; /* خلفية الـ input */
+  border: 1px solid transparent;
+  padding: 1.1rem 1.5rem;
+  border-radius: 50px; /* كبسولة زي الصورة */
+  font-size: 1rem;
+  color: #1e293b;
+  font-weight: 500;
+  transition: all 0.3s;
+  outline: none;
+}
+.settings-form-group input:focus {
+  border-color: #00d4c8;
+  background-color: white;
+  box-shadow: 0 0 0 3px rgba(0, 212, 200, 0.1);
+}
+
+/* ============ Experience Preferences ============ */
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  color: #0d9488;
+}
+.section-title i {
+  font-size: 1.5rem;
+}
+.section-title h4 {
+  margin: 0;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.preference-item {
+  background: white;
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.02);
+}
+
+.pref-info {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+.pref-info i {
+  font-size: 1.4rem;
+  color: #64748b;
+}
+.pref-info h6 {
+  margin: 0 0 0.2rem 0;
+  font-weight: 700;
+  color: #0d9488;
+}
+.pref-info p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+/* Custom Toggle Switch */
+.toggle-switch {
+  position: relative;
+  width: 54px;
+  height: 30px;
+  display: inline-block;
+}
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #cbd5e1;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+input:checked + .slider {
+  background-color: #00d4c8;
+}
+input:checked + .slider:before {
+  transform: translateX(24px);
+}
+
+/* ============ Security & Access ============ */
+.settings-divider {
+  height: 1px;
+  background-color: #e2e8f0;
+  margin: 2.5rem 0 1.5rem;
+}
+
+.security-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-update-security {
+  background-color: #00d4c8;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: all 0.3s;
+}
+.btn-update-security:hover {
+  background-color: #00b8ad;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(0, 212, 200, 0.3);
+}
+
+.btn-delete-account {
+  background: none;
+  border: none;
+  color: #dc2626; /* لون أحمر */
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: opacity 0.3s;
+}
+.btn-delete-account:hover {
+  opacity: 0.7;
+}
+
+/* ============ Global Dark Mode - Settings ============ */
+body.dark-mode .settings-container {
+  background-color: #0f172a;
+}
+body.dark-mode .navbar-brand {
+  color: #f8fafc !important;
+}
+body.dark-mode .settings-header h1 {
+  color: #2dd4bf;
+}
+body.dark-mode .settings-header p {
+  color: #94a3b8;
+}
+body.dark-mode .settings-card,
+body.dark-mode .preference-item {
+  background-color: #1e293b;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+}
+body.dark-mode .profile-title-sec h5,
+body.dark-mode .section-title h4,
+body.dark-mode .pref-info h6 {
+  color: #2dd4bf;
+}
+body.dark-mode .profile-title-sec p,
+body.dark-mode .pref-info p,
+body.dark-mode .settings-form-group label {
+  color: #94a3b8;
+}
+body.dark-mode .settings-form-group input {
+  background-color: #0f172a;
+  color: #f8fafc;
+  border-color: #334155;
+}
+body.dark-mode .settings-form-group input:focus {
+  border-color: #2dd4bf;
+  box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.1);
+}
+body.dark-mode .settings-divider {
+  background-color: #334155;
+}
+body.dark-mode .edit-avatar-btn {
+  border-color: #1e293b;
+}
+
+/* ============ Responsive ============ */
+@media (max-width: 768px) {
+  .security-actions {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+  .btn-delete-account {
+    text-align: center;
+  }
+}
